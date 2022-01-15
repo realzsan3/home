@@ -1,58 +1,84 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>HOME</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="icon" type="image/png" href="images/homepage.png">
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<div class="logo">
-							<span class="icon fa-diamond"></span>
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>hello</h1>
-								<span>欢迎来到我的Word！</span></br></br>
-								<!-- <p>「<span id="hitokoto">:D 获取中...</span>」</p>
-								<script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script> -->
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<!-- <li><a href="#intro">Blog</a></li>-->
-								<li><a href="https://blog.yongs.ml/" target="_blank">Blog</a></li>
-								<li><a href="https://jh.yongs.ml/" target="_blank">导航</a></li>
-								<li><a href="https://zfbzqhb.yongs.ml/" target="_blank">打个赏</a></li>
-								<li><a href="https://mp.weixin.qq.com/mp/homepage?__biz=MzU4NDgzMzE2OQ==&hid=5&sn=53fed175ad7eb02e28b527c0759b1e67" target="_blank">省钱</a></li>
-								<li><a href="https://skm.yongs.ml/" target="_blank">skm</a></li>
-							</ul>
-						</nav>
-					</header>
+<head>
+	<title>HOME</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="icon" type="image/png" href="images/homepage.png">
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-K1JZDLZGRZ"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
 
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; Untitled. Design: <a href="https://yongs.ml/">yongs</a>.</p>
-					</footer>
+		gtag('config', 'G-K1JZDLZGRZ');
+	</script>
+</head>
 
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="logo">
+				<span class="icon fa-diamond"></span>
 			</div>
+			<div class="content">
+				<div class="inner">
+					<h1>嘿，朋友！</h1>
+					<!-- <span>欢迎来到我的Word！</span></br></br> -->
+					<h3>「<span id="hitokoto_text">:D 获取中...</span>」</h3>
+					<!-- <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script> -->
+					<!-- <p id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></p> -->
+					<script>
+						fetch('https://v1.hitokoto.cn')
+							.then(response => response.json())
+							.then(data => {
+								const hitokoto = document.getElementById('hitokoto_text')
+								hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+								hitokoto.innerText = data.hitokoto
+							})
+							.catch(console.error)
+					</script>
+				</div>
+			</div>
+			<nav>
+				<ul>
+					<!-- <li><a href="#intro">Blog</a></li>-->
+					<li><a href="https://blog.yongs.ml/" target="_blank">Blog</a></li>
+					<li><a href="https://jh.yongs.ml/" target="_blank">导航</a></li>
+					<li><a href="https://zfbzqhb.yongs.ml/" target="_blank">打个赏</a></li>
+					<li><a href="https://mp.weixin.qq.com/mp/homepage?__biz=MzU4NDgzMzE2OQ==&hid=5&sn=53fed175ad7eb02e28b527c0759b1e67"
+							target="_blank">省钱</a></li>
+					<li><a href="https://skm.yongs.ml/" target="_blank">skm</a></li>
+				</ul>
+			</nav>
+		</header>
 
-		<!-- BG -->
-			<div id="bg"></div>
+		<!-- Footer -->
+		<footer id="footer">
+			<p class="copyright">&copy; Untitled. Design: <a href="https://yongs.ml/">yongs</a>.</p>
+		</footer>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	</div>
 
-	</body>
+	<!-- BG -->
+	<div id="bg"></div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
 </html>
