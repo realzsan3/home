@@ -1,18 +1,539 @@
-<!DOCTYPE HTML><html><head><title>HOME</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="assets/css/main.css"><link rel="icon" type="image/png" href="images/homepage.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="application-name" content="home"><meta name="apple-mobile-web-app-title" content="home"><meta name="theme-color" content="#000000"><meta name="msapplication-navbutton-color" content="#000000"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="msapplication-starturl" content="/index.html"><link rel="icon" type="image/png" sizes="128x128" href="images/128.png"><link rel="apple-touch-icon" type="image/png" sizes="128x128" href="images/128.png"><link rel="icon" type="image/png" sizes="144x144" href="images/144.png"><link rel="apple-touch-icon" type="image/png" sizes="144x144" href="images/144.png"><noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-K1JZDLZGRZ"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-K1JZDLZGRZ")</script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-175460382-1")</script><script>(function(e,n,t,a,o,s,c){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,s=n.createElement(t),c=n.getElementsByTagName(t)[0],s.async=1,s.src=a,c.parentNode.insertBefore(s,c)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","G-K1JZDLZGRZ","auto"),ga("set","dimension1","online"),ga("send","pageview")</script></head><body class="is-preload"><!-- Wrapper --><div id="wrapper"><!-- Header --><header id="header"><div class="logo"><span class="icon fa-diamond"></span></div><div class="content"><div class="inner"><h1>嘿，朋友！</h1><!-- <span>欢迎来到我的Word！</span></br></br> --><h3>「<span id="hitokoto_text">:D 获取中...</span>」</h3><!-- <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script> --><!-- <p id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></p> --><script src="./slogan.js"></script></div></div><nav><ul><!-- <li><a href="#intro">Blog</a></li>--><li><a href="https://blog.919333.xyz/" target="_blank">Blog</a></li><li><a href="https://jh.919333.xyz/" target="_blank">导航</a></li><li><a href="https://zfbhb.919333.xyz/" target="_blank">打个赏</a></li><li><!-- <a href="https://mp.weixin.qq.com/mp/homepage?__biz=MzU4NDgzMzE2OQ==&hid=5&sn=53fed175ad7eb02e28b527c0759b1e67" --> <a href="https://sourl.cn/rKAzYv/" target="_blank">省钱</a></li><li><a href="https://111533.xyz/" target="_blank">布施</a></li></ul></nav></header><!-- Footer --><footer id="footer"><p class="copyright">&copy; Untitled. Design: <a href="https://919333.xyz/">zsan</a>.</p></footer></div><!-- BG --><div id="bg"></div><!-- Scripts --><script src="assets/js/jquery.min.js"></script><script src="assets/js/browser.min.js"></script><script src="assets/js/breakpoints.min.js"></script><script src="assets/js/util.js"></script><script src="assets/js/main.js"></script><script>if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.getRegistrations()
-				.then(regs => {
-					// for (let reg of regs) {
-					// 	// 注销掉不是当前作用域的所有的 Service Worker
-					// 	// if (reg.scope !== 'https://www.919333.xyz/') {
-					// 	// 	reg.unregister()
-					// 	// }
-					// if (reg.scope !== 'http://127.0.0.1:8000/') {
-					//     reg.unregister()
-					// }
-					// }
-					// 注销掉污染 Service Worker 之后再重新注册自己作用域的 Service Worker
-					window.addEventListener('load', () => {
-						navigator.serviceWorker.register('./sw.js').then(function (e) { console.log("支持sw:", e.scope) })
-					})
-				})
-		}</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>zsan</title>
+  <meta name="description" content="技术、工具、体验生活" />
+  <meta property="og:title" content="zsan" />
+  <meta property="og:description" content="技术、工具、体验生活" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://919333.xyz/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%237f77dd'/></svg>" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-sub: #f7f7f7;
+      --text: #111111;
+      --text-muted: #666666;
+      --text-faint: #aaaaaa;
+      --border: rgba(0,0,0,0.08);
+      --border-mid: rgba(0,0,0,0.12);
+      --accent: #7f77dd;
+      --accent-light: #eeedfe;
+      --accent-dark: #534ab7;
+      --green: #1d9e75;
+      --green-light: #e1f5ee;
+      --green-dark: #0f6e56;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f0f;
+        --bg-sub: #1a1a1a;
+        --text: #f0f0f0;
+        --text-muted: #888888;
+        --text-faint: #555555;
+        --border: rgba(255,255,255,0.07);
+        --border-mid: rgba(255,255,255,0.12);
+        --accent: #afa9ec;
+        --accent-light: rgba(127,119,221,0.12);
+        --accent-dark: #cec9f6;
+        --green: #5dcaa5;
+        --green-light: rgba(29,158,117,0.12);
+        --green-dark: #9fe1cb;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .nav-domain {
+      font-size: 12px;
+      color: var(--text-faint);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      flex: 1;
+      padding: 100px 48px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-greeting {
+      font-size: clamp(48px, 8vw, 80px);
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .yiyan-wrap {
+      max-width: 600px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+
+    .yiyan-block {
+      background: var(--bg-sub);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      cursor: default;
+      transition: border-color 0.2s;
+    }
+
+    .yiyan-block:hover { border-color: var(--border-mid); }
+
+    .yiyan-bar {
+      width: 2px;
+      border-radius: 2px;
+      flex-shrink: 0;
+      align-self: stretch;
+      min-height: 20px;
+      transition: background 0.4s;
+    }
+
+    .yiyan-bar.api  { background: var(--accent); }
+    .yiyan-bar.custom { background: var(--green); }
+
+    .yiyan-inner { flex: 1; min-width: 0; }
+
+    .yiyan-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.85;
+      font-style: italic;
+      word-break: break-all;
+      transition: color 0.3s;
+    }
+
+    .yiyan-text.loading { color: var(--text-faint); animation: blink 1.4s ease-in-out infinite; }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .yiyan-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .yiyan-from {
+      font-size: 12px;
+      color: var(--text-faint);
+      font-style: normal;
+    }
+
+    .yiyan-badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.03em;
+      font-style: normal;
+      transition: all 0.3s;
+    }
+
+    .yiyan-badge.api    { background: var(--accent-light); color: var(--accent-dark); }
+    .yiyan-badge.custom { background: var(--green-light);  color: var(--green-dark);  }
+
+    /* ── ENTRIES ── */
+    .entries {
+      border-top: 0.5px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.35s forwards;
+    }
+
+    .entry {
+      padding: 40px 48px;
+      border-right: 0.5px solid var(--border);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .entry::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .entry:hover { background: var(--bg-sub); }
+    .entry:hover::after { width: 100%; }
+    .entry:last-child { border-right: none; }
+
+    .entry-label {
+      font-size: 10px;
+      color: var(--text-faint);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .entry-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .entry-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .entry-arrow {
+      font-size: 18px;
+      color: var(--accent);
+      margin-top: 24px;
+      display: block;
+      transition: transform 0.2s;
+    }
+
+    .entry:hover .entry-arrow { transform: translateX(4px); }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 0.5px solid var(--border);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-faint);
+    }
+
+    .footer-github {
+      font-size: 12px;
+      color: var(--text-faint);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .footer-github:hover { color: var(--text-muted); }
+
+    .footer-github svg {
+      width: 14px; height: 14px;
+      fill: currentColor;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      .nav   { padding: 16px 20px; }
+      .hero  { padding: 64px 20px 56px; }
+
+      .entries {
+        grid-template-columns: 1fr;
+      }
+
+      .entry {
+        padding: 28px 20px;
+        border-right: none;
+        border-bottom: 0.5px solid var(--border);
+      }
+
+      .entry:last-child { border-bottom: none; }
+      .entry::after { display: none; }
+
+      .footer { padding: 16px 20px; }
+    }
+
+    @media (min-width: 641px) and (max-width: 900px) {
+      .nav  { padding: 18px 32px; }
+      .hero { padding: 80px 32px 64px; }
+
+      .entries { grid-template-columns: repeat(3, 1fr); }
+
+      .entry { padding: 32px; }
+
+      .footer { padding: 18px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="nav-logo" href="/">
+      zsan
+      <span class="nav-dot"></span>
+    </a>
+    <span class="nav-domain">919333.xyz</span>
+  </nav>
+
+  <main class="hero">
+    <h1 class="hero-greeting">嘿，朋友！</h1>
+
+    <div class="yiyan-wrap">
+      <div class="yiyan-block">
+        <div class="yiyan-bar api" id="yy-bar"></div>
+        <div class="yiyan-inner">
+          <p class="yiyan-text loading" id="yy-text">加载中…</p>
+          <div class="yiyan-meta">
+            <span class="yiyan-from" id="yy-from"></span>
+            <span class="yiyan-badge api" id="yy-badge">一言</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="entries">
+    <a class="entry" href="https://blog.919333.xyz/" target="_blank" rel="noopener">
+      <span class="entry-label">读</span>
+      <span class="entry-title">博客</span>
+      <span class="entry-desc">技术笔记 · 工具部署 · 理财工具</span>
+      <span class="entry-arrow">→</span>
+    </a>
+    <a class="entry" href="https://tools.111533.xyz/" target="_blank" rel="noopener">
+      <span class="entry-label">做</span>
+      <span class="entry-title">小工具</span>
+      <span class="entry-desc">一些实用小工具</span>
+      <span class="entry-arrow">→</span>
+    </a>
+    <a class="entry" href="https://111533.xyz/" target="_blank" rel="noopener">
+      <span class="entry-label">赏</span>
+      <span class="entry-title">打个赏</span>
+      <span class="entry-desc">如果有帮到你</span>
+      <span class="entry-arrow">→</span>
+    </a>
+  </section>
+
+  <footer class="footer">
+    <span class="footer-copy">© <span id="year"></span> zsan</span>
+    <a class="footer-github" href="https://github.com/realzsan3/home" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58
+          0-.28-.01-1.03-.01-2.02-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76
+          -1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1
+          .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22
+          -.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0
+          2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84
+          1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0
+          1.6-.01 2.9-.01 3.29 0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+  </footer>
+
+  <script>
+    // 年份
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 自定义句子池（原始内容，tab 分隔作者）
+    const rawSentences = [
+      "一个人的价值, 在于他贡献了什么, 而不在于他获得了什么!\t@爱因斯坦",
+      "你若喜爱你自己的价值, 你就得给世界创造价值!\t@歌德",
+      "我从来不把安逸和享乐当作生活目的; \t对这种伦理基础, 我称之为[猪栏的理想]\t@爱因斯坦",
+      "未经反思自省的人生不值得去过\tThe unexamined life is not worth living.\t@苏格拉底 (哲学之父)",
+      "大多数人在20到30岁就已经过完自己的一生; \t一过了这个年龄段, 他们就变成自己的影子, 以后的生命只是在不断重复自己...\t@<约翰.克里斯朵夫>罗曼.罗兰 (作家 诺贝尔奖得主)",
+      "活着, 如同生命最后一天般活着; \t学习, 如同永远活着般学习!\t@圣雄甘地 (印度国父)",
+      "人所面对的绝境, 在很多情况下都不是生存的绝境, 而是[精神]的绝境!",
+      "世上只有一种英雄主义 -- 就是在认清生活的真相之后依然热爱生活\t@罗曼.罗兰 (作家 诺贝尔奖得主)",
+      "人的一切痛苦都是源于对自己无能的愤怒\t@王小波 (作家)",
+      "Stay hungry. Stay foolish.\t@乔布斯引自<全球概览>",
+      "人生中最大的两个财富是: 你的[才华]和你的[时间];\t才华越来越多而时间越来越少;我们的一生就是用时间来换取才华;",
+      "拥有追随自己内心与直觉的勇气 -- 你的内心与直觉多少已经知道你真正想要成为什么样的人\tHave the courage to follow your heart and intuition. They somehow already know what you truly want to become.\t@乔布斯",
+      "善良比聪明重要 -- 聪明是一种天赋, 而善良是一种选择\tCleverness is a gift, kindness is a choice.\t@贝佐斯 (亚马逊公司创始人)",
+      "我每天都自问: '如果今天是我生命的最后一天, 我还会做今天要做的事情吗?'\t如果连续很多天得到[否定]的回答, 那我就需要作出一些改变了;\t@乔布斯",
+      "预测未来最好的方法就是去创造未来\t@林肯 (美国前总统)",
+      "没有人可以回到过去, 重新开始; \t但谁都可以从现在开始, 书写一个全然不同的结局!",
+      "人生最大的痛苦不是失败\t而是没有经历自己想要经历的一切",
+      "许多人所谓的成熟, 不过是被习俗磨去了棱角, 变得世故而实际了; 那不是成熟, 而是精神的早衰和个性的夭亡!\t真正的成熟, 应当是独特个性的形成, 真实自我的发现, 精神上的结果和丰收;\t@<在世纪的转折点上>尼采 (哲学家 思想家)",
+      "这辈子没法做太多的事情, 所以每一件都要做到精彩绝伦!\t@乔布斯",
+      "你的时间有限, 所以不要浪费时间去重复别人的生活!\tYour time is limited, so don`t waste it living someone else`s life.\t@乔布斯",
+      "每个人出生的时候都是原创\t可悲的是很多人渐渐都成了盗版",
+      "时间会刺破青春的华丽精致 \t会把平行线刻上美人的额角 \t会吃掉稀世之珍和天生丽质 \t什么都逃不过它横扫的镰刀\t@莎士比亚",
+      "死亡是生命中最好的发明 -- 它把旧的清除以便给新的让路\t@乔布斯",
+      "一年之计 莫如树谷\t十年之计 莫如树木\t终身之计 莫如树人\t@<管子>",
+      "非淡泊无以明志\t非宁静无以致远\t@<淮南子>刘安",
+      "你若不想做, 总能找到借口\t你若想做, 总会找到方法\t@阿拉伯谚语",
+      "想得到你从未拥有过的东西\t就必须做你从未做过的事情",
+      "你若失去了财产, 你只失去了一点儿; \t你若失去了荣誉, 你就失去了许多; \t你若失去了勇气, 你就把一切都失去了!\t@歌德",
+      "那不能杀死我的, 使我更强!\tWhat does not kill me, makes me stronger.\t@尼采 (哲学家 思想家)",
+      "对爱情的渴望, 对知识的追求, 对人类苦难不可遏制的同情心, 这三种纯洁而无比强烈的激情支配着我的一生;\t@<我为什么而活着>罗素 (哲学家 数学家 思想家)",
+      "围在城里的人想逃出来, 城外的人想冲进去; \t对婚姻也罢, 职业也罢, 人生的愿望大都如此!\t@<围城>钱钟书",
+      "授人以鱼不如授人以渔!\t授人以鱼只救一时之急, 授人以渔则可解一生之需!",
+      "兴趣是最好的老师\t@爱因斯坦",
+      "知识上的投资总能得到最好的回报\t@富兰克林 (美国开国元勋 物理学家 作家)",
+      "学习不是填满水桶, 而是点燃火焰!\tEducation is not the filling of a pail but the lighting of a fire.\t@叶芝 (爱尔兰诗人)",
+      "我唯一能确定的就是自己的[无知]\tI know nothing except the fact of my ignorance.\t@苏格拉底 (哲学之父)",
+      "真正的无知[不是]知识的贫乏\t而是拒绝获取知识\t@波普尔 (哲学家 思想家)",
+      "读书是在别人思想的帮助下建立自己的思想\t@尼古拉.鲁巴金 (作家)",
+      "不要盲目地崇拜任何权威 -- 因为你总能找到相反的权威\t@罗素 (哲学家 数学家 思想家)",
+      "想象力比知识更重要!\t因为知识是有限的, 而想象力概括着世界的一切, 推动着进步, 并且是知识进化的源泉\t@爱因斯坦",
+      "大多数人宁愿相信[美丽的谎言]\t而不愿意直面[丑陋的真相]",
+      "你要按你所想的去生活\t否则你迟早会按你所生活的去想",
+      "知人者智 自知者明\t胜人者有力 自胜者强\t@<道德经>",
+      "简单即是美\tSimple is beautiful",
+      "简单是可靠的先决条件\tSimplicity is prerequisite for reliability.\t@Edsger Dijkstra (图灵奖得主)",
+      "优秀软件的作用是让复杂的东西看起来简单\t@Grady Booch (UML 创始人之一)",
+      "优秀的设计在不断地演化\t糟糕的设计在不断地打补丁",
+      "好的程序代码本身就是最好的文档\t@<代码大全>Steve McConnell",
+      "过早的优化是万恶之源\tPremature optimization is the root of all evil.\t@Donald Knuth (图灵奖得主 算法大牛)",
+      "如果说调试(debug)是去除 bug 的过程, 那么编程就是制造 bug 的过程;\t@Edsger Dijkstra (图灵奖得主)",
+      "在理论上, 理论和实践是没有差异的; 但在实践中, 是有差异的!\tIn theory, there is no difference between theory and practice. But in practice, there is.\t@Snepscheut",
+      "权力导致腐败, 绝对的权力导致绝对的腐败!\t@阿克顿勋爵 (政治思想家)",
+      "生于忧患\t死于安乐\t@<孟子 告子下>",
+      "合抱之木生于毫末\t九层之台起于累土\t千里之行始于足下\t@<道德经>",
+      "海纳百川 有容乃大\t壁立千仞 无欲则刚\t@林则徐",
+      "大胆假设 小心求证\t认真做事 严肃做人\t@胡适",
+      "勿以恶小而为之\t勿以善小而不为\t@<三国志>陈寿",
+      "君子之交淡若水\t小人之交甘若醴\t@<庄子>",
+      "不要去欺骗别人 -- 因为你能骗到的, 都是相信你的人",
+      "唯一不变的是变化本身!",
+      "我也会有恐惧和贪婪, 只不过是 -- 在大众贪婪时恐惧, 在大众恐惧时贪婪!\t@巴菲特",
+      "控制风险的最好办法是深入思考, 而不是投资组合!\t@巴菲特",
+      "价值投资不能保证一定盈利\t但价值投资提供了通向成功的[唯一]机会\t@巴菲特",
+      "退潮时便可知道谁在裸泳\t@巴菲特",
+      "短期而言, 股票市场是个投票机\t长期而言, 股票市场是个称重器\t@本杰明.格雷厄姆",
+      "最多人走的路肯定最安全\t但别指望会在这样的路上碰到很多猎物\t@纪德 (作家 诺贝尔奖得主)",
+      "投资是预测资产收益的活动\t投机是预测市场心理的活动\t@凯恩斯 (经济学家)",
+      "高等教育的价值在于培训思维, 而不在于传授事实!\t@爱因斯坦",
+      "成功的教学所需要的不是强制\t而是激发学生的欲望\t@托尔斯泰 (作家)",
+      "与恶魔战斗的勇士, 要小心自己也变成恶魔!\t当你长久地凝视深渊, 深渊也在凝视着你!\t@尼采 (哲学家 思想家)",
+      "每当有事情发生, 懦夫会问: '这么做安全吗?'\t患得患失者会问: '这么做明智吗?'\t虚荣者会问: '这么做受欢迎吗?'\t但是良知只会问: '这么做正确吗?'\t@马丁.路德.金 (美国人权领袖)",
+      "雪崩时, 没有一片雪花觉得自己有责任\t@伏尔泰 (启蒙思想家)",
+      "以铜为镜 可以正衣冠\t以史为镜 可以知兴替\t以人为镜 可以明得失\t@李世民 (唐太宗)",
+      "人类从历史中学到的唯一教训就是 -- 人类没有从历史中学到任何教训!\t@汤因比 (历史学家)",
+      "管理是一种实践\t其本质不在于[知]而在于[行]\t其验证不在于[逻辑]而在于[成果]\t@彼得.德鲁克 (管理学之父)",
+      "用人不在于如何减少人的短处\t而在于如何发挥人的长处\t@彼得.德鲁克 (管理学之父)",
+      "以用户为中心 其它一切纷至沓来\t@Google 信条",
+      "己所不欲\t勿施于人\t@<论语>",
+      "水至清则无鱼\t人至察则无徒\t@<汉书 东方朔传>",
+      "不怕神一样的对手\t就怕猪一样的队友",
+      "在自己喜欢的时间，和喜欢的人，做喜欢的事，想做多久就做多久。",
+      "努力改变自己能改变的，躺平接受自己不能改变的。",
+      "少买垃圾，用有限资源买品质好的。",
+      "多攒钱，股市不缺机会，缺现金。",
+    ];
+
+    // 解析原始格式：tab 分隔，最后一段以 @ 开头的为作者
+    function parseRaw(raw) {
+      const parts = raw.split('\t').map(s => s.trim()).filter(Boolean);
+      let from = '';
+      const textParts = [];
+      parts.forEach(p => {
+        if (p.startsWith('@')) from = '— ' + p.slice(1);
+        else textParts.push(p);
+      });
+      return { text: textParts.join(' '), from };
+    }
+
+    const customs = rawSentences.map(parseRaw);
+
+    function setYiyan(text, from, type) {
+      const el    = document.getElementById('yy-text');
+      const bar   = document.getElementById('yy-bar');
+      const badge = document.getElementById('yy-badge');
+      const fromEl= document.getElementById('yy-from');
+
+      el.classList.remove('loading');
+      el.textContent   = text;
+      fromEl.textContent = from || '';
+
+      bar.className   = 'yiyan-bar ' + type;
+      badge.className = 'yiyan-badge ' + type;
+      badge.textContent = type === 'api' ? '一言' : '箴言';
+    }
+
+    function showCustom() {
+      const p = customs[Math.floor(Math.random() * customs.length)];
+      setYiyan(p.text, p.from, 'custom');
+    }
+
+    // 50% 概率走官方 API，50% 走自定义
+    if (Math.random() > 0.5) {
+      fetch('https://v1.hitokoto.cn/?encode=json')
+        .then(r => r.json())
+        .then(d => setYiyan(d.hitokoto, d.from ? '— ' + d.from : '', 'api'))
+        .catch(showCustom);
+    } else {
+      showCustom();
+    }
+  </script>
+</body>
+</html>
